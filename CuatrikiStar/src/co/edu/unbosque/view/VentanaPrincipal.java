@@ -10,6 +10,7 @@ public class VentanaPrincipal extends JFrame{
 	private PantallaInicio pInicio;
 	private RegistroJugador rJugador;
 	private JugarCuatriki jCuatriki;
+	private HistorialPartidas hPartidas;
 
 	public VentanaPrincipal() {
 
@@ -33,6 +34,11 @@ public class VentanaPrincipal extends JFrame{
 		jCuatriki.setBounds(0, 0, 1300, 900);
 		jCuatriki.setVisible(false);
 		getContentPane().add(jCuatriki);
+		
+		hPartidas = new HistorialPartidas();
+		hPartidas.setBounds(0, 0, 1300, 900);
+		hPartidas.setVisible(false);
+		getContentPane().add(hPartidas);
 
 		setResizable(false);
 		setLocationRelativeTo(null);
@@ -60,6 +66,10 @@ public class VentanaPrincipal extends JFrame{
 
 	public JugarCuatriki getjCuatriki() {
 		return jCuatriki;
+	}
+
+	public HistorialPartidas gethPartidas() {
+		return hPartidas;
 	}
 	
 	

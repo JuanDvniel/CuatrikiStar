@@ -21,6 +21,8 @@ public class Controller {
 		ventanaprincipal.getjCuatriki().getBackMenuButton().addActionListener(e -> BackToMenu());
 		ventanaprincipal.getjCuatriki().getGameHButton().addActionListener(e -> abrirPantallaHistorialPartidas());
 		ventanaprincipal.getjCuatriki().getRestartButton().addActionListener(e -> ReiniciarTablero());
+		ventanaprincipal.gethPartidas().getBackMenuButton().addActionListener(e -> BackToMenu());
+		ventanaprincipal.gethPartidas().getBackToGame().addActionListener(e -> BackToGame());
 	}
 
 	private void abrirPantallaRegistro() {
@@ -29,9 +31,8 @@ public class Controller {
 
 	private void abrirPantallaHistorialPartidas() {
 
-		//Añadir Pantalla
+		ventanaprincipal.mostrarPanel(ventanaprincipal.gethPartidas());
 
-		JOptionPane.showInternalMessageDialog(null, null, ("Pantalla no existe aun"), 0, null);
 	}
 
 	private void irAJugar() {
@@ -41,6 +42,11 @@ public class Controller {
 	private void BackToMenu() {
 		ventanaprincipal.mostrarPanel(ventanaprincipal.getpInicio());
 
+	}
+	
+	private void BackToGame() {
+		ventanaprincipal.mostrarPanel(ventanaprincipal.getjCuatriki());
+		
 	}
 
 	private void ReiniciarTablero() {
