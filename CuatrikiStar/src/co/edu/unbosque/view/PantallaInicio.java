@@ -51,7 +51,7 @@ public class PantallaInicio extends JPanel {
 
 		ImageIcon Logo = new ImageIcon(getClass().getResource("/images/PanelInicio/LOGO.png"));
 		JLabel labelLogo = new JLabel(Logo);
-		labelLogo.setBounds(0,0,1300,900);
+		labelLogo.setBounds(-20,0,1300,900);
 		add(labelLogo);
 
 		ImageIcon Fondo = new ImageIcon(getClass().getResource("/images/PanelInicio/FONDO.png"));
