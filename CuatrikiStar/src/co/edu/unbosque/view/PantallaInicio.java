@@ -7,7 +7,8 @@ import javax.swing.JPanel;
 
 public class PantallaInicio extends JPanel {
 
-	JButton Start;
+	private JButton startButton;
+	private JButton gameHistoryButton;
 
 	public PantallaInicio() {
 
@@ -17,18 +18,35 @@ public class PantallaInicio extends JPanel {
 		setVisible(true);
 
 		inicializarComponentes();
+
 	}
 
 	public void inicializarComponentes() {
 
-		Start = new JButton();
-		Start.setBounds(516, 625, 276, 128);
-		Start.setVisible(false);
-		add(Start);
+		// Botón para iniciar el juego
+        startButton = new JButton();
+        startButton.setBounds(516, 600, 276, 128);
+        startButton.setContentAreaFilled(false);  // Mantener invisible pero funcional
+        startButton.setBorderPainted(false);
+        startButton.setFocusPainted(false);
+        add(startButton);
+
+        // Botón para ver el historial de partidas
+        gameHistoryButton = new JButton();
+        gameHistoryButton.setBounds(455, 700, 397, 102);
+        gameHistoryButton.setContentAreaFilled(false);  // Mantener invisible pero funcional
+        gameHistoryButton.setBorderPainted(false);
+        gameHistoryButton.setFocusPainted(false);
+        add(gameHistoryButton);
+		
+		ImageIcon GameH = new ImageIcon(getClass().getResource("/images/JugarCuatriki/GAME HISTORY.png"));
+		JLabel labelGameH = new JLabel(GameH);
+		labelGameH.setBounds(455, 700, 397, 102);
+		add(labelGameH);
 
 		ImageIcon StartButton = new ImageIcon(getClass().getResource("/images/PanelInicio/STARTBUTTON.png"));
 		JLabel labelStartButton = new JLabel(StartButton);
-		labelStartButton.setBounds(516, 625, 276, 128);
+		labelStartButton.setBounds(516, 600, 276, 128);
 		add(labelStartButton);
 
 		ImageIcon Logo = new ImageIcon(getClass().getResource("/images/PanelInicio/LOGO.png"));
@@ -38,13 +56,25 @@ public class PantallaInicio extends JPanel {
 
 		ImageIcon Fondo = new ImageIcon(getClass().getResource("/images/PanelInicio/FONDO.png"));
 		JLabel labelFondo = new JLabel(Fondo);
-		labelFondo.setBounds(0,0,1300,900);
+		labelFondo.setBounds(0, 0, 1300, 900);
 		add(labelFondo);
-
-
 
 	}
 
+	public JButton getStartButton() {
+		return startButton;
+	}
 
+	public void setStartButton(JButton startButton) {
+		this.startButton = startButton;
+	}
+
+	public JButton getGameHistoryButton() {
+		return gameHistoryButton;
+	}
+
+	public void setGameHistoryButton(JButton gameHistoryButton) {
+		this.gameHistoryButton = gameHistoryButton;
+	}
 
 }
