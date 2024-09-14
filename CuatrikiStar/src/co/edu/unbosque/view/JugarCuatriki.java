@@ -64,6 +64,11 @@ public class JugarCuatriki extends JPanel {
         matrizDeJuego = new MatrizDeJuego();
         matrizDeJuego.setBounds(107, 212, 596, 551);  // Posicionar la matriz de juego
         add(matrizDeJuego);  // Agregar la matriz al panel
+        
+        ImageIcon fondoMatriz = new ImageIcon(getClass().getResource("/images/matriz/MATRIZDIBUJO.png"));
+		JLabel labelfondoMatriz = new JLabel(fondoMatriz);
+		labelfondoMatriz.setBounds(107, 212, 596, 551);
+		add(labelfondoMatriz);
 
         // Imágenes para los botones
         JLabel labelRestart = new JLabel(new ImageIcon(getClass().getResource("/images/JugarCuatriki/RESTART.png")));

@@ -2,7 +2,10 @@ package co.edu.unbosque.view;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class MatrizDeJuego extends JPanel {
@@ -10,11 +13,10 @@ public class MatrizDeJuego extends JPanel {
     private JButton[][] botones = new JButton[4][4]; 
 
     public MatrizDeJuego() {
-        setBounds(0, 0, 596, 551); 
-        setBackground(Color.BLACK);
-        setLayout(null);
-        setVisible(true);
-        setLayout(new GridLayout(4, 4, 2, 2)); 
+    	 setBounds(0, 0, 596, 551); 
+         setOpaque(false);
+         setLayout(new GridLayout(4, 4, 2, 2));
+    
         
       
         for (int r = 0; r < 4; r++) {
@@ -31,6 +33,9 @@ public class MatrizDeJuego extends JPanel {
 
         setVisible(true);
     }
+    private void dibujarFondo() {
+    	
+	}
 
     public JButton[][] getBotones() {
         return botones;
