@@ -2,9 +2,9 @@ package co.edu.unbosque.model;
 
 public class Jugador {
     private String nombre;
-    private String ficha;
+    private char ficha;
 
-    public Jugador(String nombre, String ficha) {
+    public Jugador(String nombre, char ficha) {
         this.ficha = ficha;
         this.nombre = nombre;
     }
@@ -17,11 +17,11 @@ public class Jugador {
 		this.nombre = nombre;
 	}
 
-	public String getFicha() {
+	public char getFicha() {
 		return ficha;
 	}
 
-	public void setFicha(String ficha) {
+	public void setFicha(char ficha) {
 		this.ficha = ficha;
 	}
 
