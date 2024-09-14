@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import config.FontConfig;
+import config.ImageConfig;
 
 public class RegistroJugador extends JPanel {
 
@@ -21,6 +22,7 @@ public class RegistroJugador extends JPanel {
     private FontConfig fontConfig;  // Instancia de Configuracion de Fuente.
 
     public RegistroJugador() {
+ 
         setBounds(0, 0, 1300, 900);
         setBackground(null);
         setLayout(null);

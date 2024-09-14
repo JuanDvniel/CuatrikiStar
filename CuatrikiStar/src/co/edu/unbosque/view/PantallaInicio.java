@@ -5,10 +5,13 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import config.ImageConfig;
+
 public class PantallaInicio extends JPanel {
 
 	private JButton startButton;
 	private JButton gameHistoryButton;
+	private ImageConfig Fondo;
 
 	public PantallaInicio() {
 
@@ -54,10 +57,8 @@ public class PantallaInicio extends JPanel {
 		labelLogo.setBounds(-20,0,1300,900);
 		add(labelLogo);
 
-		ImageIcon Fondo = new ImageIcon(getClass().getResource("/images/PanelInicio/FONDO.png"));
-		JLabel labelFondo = new JLabel(Fondo);
-		labelFondo.setBounds(0, 0, 1300, 900);
-		add(labelFondo);
+		Fondo = new ImageConfig();
+		Fondo.dibujarFondo(this);
 
 	}
 

@@ -16,6 +16,7 @@ public class JugarCuatriki extends JPanel {
     private JButton restartButton;
     private JTextArea consola;
     private FontConfig fontConfig;
+    private MatrizDeJuego matrizDeJuego;
 
     public JugarCuatriki() {
         setBounds(0, 0, 1300, 900);
@@ -59,6 +60,10 @@ public class JugarCuatriki extends JPanel {
         gameHButton.setBorderPainted(false);
         gameHButton.setFocusPainted(false);
         add(gameHButton);
+        
+        matrizDeJuego = new MatrizDeJuego();
+        matrizDeJuego.setBounds(107, 212, 596, 551);  // Posicionar la matriz de juego
+        add(matrizDeJuego);  // Agregar la matriz al panel
 
         // Imágenes para los botones
         JLabel labelRestart = new JLabel(new ImageIcon(getClass().getResource("/images/JugarCuatriki/RESTART.png")));

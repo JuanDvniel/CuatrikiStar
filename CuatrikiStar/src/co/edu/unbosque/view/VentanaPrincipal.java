@@ -19,22 +19,22 @@ public class VentanaPrincipal extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setBackground(Color.WHITE);
 		getContentPane().setLayout(null);
-		
-		
+
+
 		pInicio = new PantallaInicio();
 		pInicio.setBounds(0, 0, 1300, 900);
 		getContentPane().add(pInicio);
-	
+
 		rJugador = new RegistroJugador();
 		rJugador.setBounds(0, 0, 1300, 900);
 		rJugador.setVisible(false);
 		getContentPane().add(rJugador);
-		
+
 		jCuatriki = new JugarCuatriki();
 		jCuatriki.setBounds(0, 0, 1300, 900);
 		jCuatriki.setVisible(false);
 		getContentPane().add(jCuatriki);
-		
+
 		hPartidas = new HistorialPartidas();
 		hPartidas.setBounds(0, 0, 1300, 900);
 		hPartidas.setVisible(false);
@@ -45,15 +45,15 @@ public class VentanaPrincipal extends JFrame{
 		setVisible(true);
 
 	}
-	
+
 	public void mostrarPanel(JPanel panel) {
-		
+
 		getContentPane().removeAll();
-        getContentPane().add(panel);
-        panel.setVisible(true);
-        revalidate();
-        repaint();
-		
+		getContentPane().add(panel);
+		panel.setVisible(true);
+		revalidate();
+		repaint();
+
 	}
 
 	public PantallaInicio getpInicio() {
@@ -70,10 +70,10 @@ public class VentanaPrincipal extends JFrame{
 
 	public HistorialPartidas gethPartidas() {
 		return hPartidas;
+
 	}
-	
-	
 
 }
+
 
 
