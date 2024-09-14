@@ -56,7 +56,7 @@ public class HistorialPartidas extends JPanel {
 		ConsolaHistorial.setOpaque(false);
 		ConsolaHistorial.setBorder(new EmptyBorder(0, 0, 0, 0));
 		ConsolaHistorial.setFont(fontConfig.getFuentePersonalizada());
-		ConsolaHistorial.setForeground(new Color(64, 205, 80));
+		ConsolaHistorial.setForeground(new Color(237, 15, 255));
 		add(ConsolaHistorial);
 
 		JLabel labelBackGame = new JLabel(new ImageIcon(getClass().getResource("/images/HistorialPartidas/BACK TO GAME.png")));
