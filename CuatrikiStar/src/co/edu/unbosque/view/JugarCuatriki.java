@@ -89,19 +89,54 @@ public class JugarCuatriki extends JPanel {
         add(labelDemo1Screen);
     }
 
-    public JButton getGameHButton() {
-        return gameHButton;
-    }
+	public JButton getGameHButton() {
+		return gameHButton;
+	}
 
-    public JButton getBackMenuButton() {
-        return backMenuButton;
-    }
+	public void setGameHButton(JButton gameHButton) {
+		this.gameHButton = gameHButton;
+	}
 
-    public JButton getRestartButton() {
-        return restartButton;
-    }
+	public JButton getBackMenuButton() {
+		return backMenuButton;
+	}
 
-    public JTextArea getConsola() {
-        return consola;
-    }
+	public void setBackMenuButton(JButton backMenuButton) {
+		this.backMenuButton = backMenuButton;
+	}
+
+	public JButton getRestartButton() {
+		return restartButton;
+	}
+
+	public void setRestartButton(JButton restartButton) {
+		this.restartButton = restartButton;
+	}
+
+	public JTextArea getConsola() {
+		return consola;
+	}
+
+	public void setConsola(JTextArea consola) {
+		this.consola = consola;
+	}
+
+	public FontConfig getFontConfig() {
+		return fontConfig;
+	}
+
+	public void setFontConfig(FontConfig fontConfig) {
+		this.fontConfig = fontConfig;
+	}
+
+	public MatrizDeJuego getMatrizDeJuego() {
+		return matrizDeJuego;
+	}
+
+	public void setMatrizDeJuego(MatrizDeJuego matrizDeJuego) {
+		this.matrizDeJuego = matrizDeJuego;
+	}
+    
+
+
 }

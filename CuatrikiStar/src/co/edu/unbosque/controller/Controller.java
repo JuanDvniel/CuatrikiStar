@@ -1,5 +1,6 @@
 package co.edu.unbosque.controller;
 
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import co.edu.unbosque.model.Juego;
@@ -8,75 +9,127 @@ import co.edu.unbosque.view.VentanaPrincipal;
 
 public class Controller {
 
-	private VentanaPrincipal ventanaprincipal;
-	private Juego  juego;
-	private Jugador jugador1;
-	private Jugador jugador2;
+    private VentanaPrincipal ventanaPrincipal;
+    private Juego juego;
+    private Jugador jugador1;
+    private Jugador jugador2;
+    private boolean turnoJugador; // true para Jugador X, false para Jugador O
+    private int movimientosRealizados;
 
-	public Controller() {
-		ventanaprincipal = new VentanaPrincipal();
-		asignarOyentes();	
-	}
+    public Controller() {
+        ventanaPrincipal = new VentanaPrincipal();
+        movimientosRealizados = 0;
+        turnoJugador = true; // El juego empieza con el Jugador X
+        asignarOyentes(); // Asignar oyentes a los botones
+    }
 
-	public void asignarOyentes() {
+    public void asignarOyentes() {
+        ventanaPrincipal.getpInicio().getStartButton().addActionListener(e -> abrirPantallaRegistro());
+        ventanaPrincipal.getpInicio().getGameHistoryButton().addActionListener(e -> abrirPantallaHistorialPartidas());
+        ventanaPrincipal.getrJugador().getPlayButton().addActionListener(e -> irAJugar());
+        ventanaPrincipal.getrJugador().getGuardarJugador1().addActionListener(e -> guardarJugador());
+        ventanaPrincipal.getrJugador().getGuardarJugador2().addActionListener(e -> guardarJugador());
+        ventanaPrincipal.getjCuatriki().getBackMenuButton().addActionListener(e -> BackToMenu());
+        ventanaPrincipal.getjCuatriki().getGameHButton().addActionListener(e -> abrirPantallaHistorialPartidas());
+        ventanaPrincipal.getjCuatriki().getRestartButton().addActionListener(e -> reiniciarTablero());
 
-		ventanaprincipal.getpInicio().getStartButton().addActionListener(e -> abrirPantallaRegistro());
-		ventanaprincipal.getpInicio().getGameHistoryButton().addActionListener(e -> abrirPantallaHistorialPartidas());
-		ventanaprincipal.getrJugador().getPlayButton().addActionListener(e -> irAJugar());
-		ventanaprincipal.getrJugador().getGuardarJugador1().addActionListener(e -> guardarJugador());
-		ventanaprincipal.getrJugador().getGuardarJugador2().addActionListener(e -> guardarJugador());
-		ventanaprincipal.getrJugador().getPlayButton().addActionListener(e -> irAJugar());
-		ventanaprincipal.getjCuatriki().getBackMenuButton().addActionListener(e -> BackToMenu());
-		ventanaprincipal.getjCuatriki().getGameHButton().addActionListener(e -> abrirPantallaHistorialPartidas());
-		ventanaprincipal.getjCuatriki().getRestartButton().addActionListener(e -> ReiniciarTablero());
-		ventanaprincipal.gethPartidas().getBackMenuButton().addActionListener(e -> BackToMenu());
-		ventanaprincipal.gethPartidas().getBackToGame().addActionListener(e -> BackToGame());
-		
-		
-	}
-	
-	private void guardarJugador() {
-		String nombre1 = ventanaprincipal.getrJugador().getNombreJugador1().getText();
-		String nombre2 =  ventanaprincipal.getrJugador().getNombreJugador2().getText();
-		
-		jugador1 = new Jugador(nombre1, 'x');
-		System.out.println(jugador1);
-		
-		jugador2 = new Jugador(nombre2, 'o');
-		System.out.println(jugador2);
-		boolean turnoJugador = true;
+        // Asignar oyentes a los botones del tablero
+        asignarOyentesTablero();
+    }
 
-	}
+    private void guardarJugador() {
+        String nombre1 = ventanaPrincipal.getrJugador().getNombreJugador1().getText();
+        String nombre2 = ventanaPrincipal.getrJugador().getNombreJugador2().getText();
 
-	private void abrirPantallaRegistro() {
-		ventanaprincipal.mostrarPanel(ventanaprincipal.getrJugador());
-	}
+        jugador1 = new Jugador(nombre1, 'x');
+        jugador2 = new Jugador(nombre2, 'o');
 
-	private void abrirPantallaHistorialPartidas() {
+        System.out.println(jugador1);
+        System.out.println(jugador2);
+    }
 
-		ventanaprincipal.mostrarPanel(ventanaprincipal.gethPartidas());
+    private void asignarOyentesTablero() {
+        JButton[][] botones = ventanaPrincipal.getjCuatriki().getMatrizDeJuego().getBotones();
 
-	}
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                final int fila = i;
+                final int columna = j;
 
-	private void irAJugar() {
-		ventanaprincipal.mostrarPanel(ventanaprincipal.getjCuatriki());
-	}
+                // Añadir oyente a cada botón del tablero
+                botones[fila][columna].addActionListener(e -> manejarMovimiento(fila, columna, botones[fila][columna]));
+            }
+        }
+    }
 
-	private void BackToMenu() {
-		ventanaprincipal.mostrarPanel(ventanaprincipal.getpInicio());
+    private void manejarMovimiento(int fila, int columna, JButton boton) {
+        try {
+            if (boton.getIcon() == null) { 
+                if (turnoJugador) {
+                    boton.setIcon(ventanaPrincipal.getjCuatriki().getMatrizDeJuego().getImagenX()); 
+                    juego.jugarTurno(jugador1, fila, columna); // Actualizar el modelo
+                } else {
+                    boton.setIcon(ventanaPrincipal.getjCuatriki().getMatrizDeJuego().getImagenO()); 
+                    juego.jugarTurno(jugador2, fila, columna); // Actualizar el modelo
+                }
 
-	}
-	
-	private void BackToGame() {
-		ventanaprincipal.mostrarPanel(ventanaprincipal.getjCuatriki());
-		
-	}
+                turnoJugador = !turnoJugador; 
+                movimientosRealizados++;
 
-	private void ReiniciarTablero() {
+                if (juego.isJuegoTerminado()) {
+                    JOptionPane.showMessageDialog(null, "¡El juego ha terminado!");
+                    reiniciarTablero();
+                } else if (movimientosRealizados == 16) {
+                    JOptionPane.showMessageDialog(null, "¡Es un empate!");
+                    reiniciarTablero();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "¡Esa casilla ya está ocupada!");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
 
-		//Añadir funcion
+    private void abrirPantallaRegistro() {
+        ventanaPrincipal.mostrarPanel(ventanaPrincipal.getrJugador());
+    }
 
-		JOptionPane.showInternalMessageDialog(null, null, ("Falta añadir funcionalidad"), 0, null);
+    private void abrirPantallaHistorialPartidas() {
+        ventanaPrincipal.mostrarPanel(ventanaPrincipal.gethPartidas());
+    }
 
-	}
+    private void irAJugar() {
+      
+        juego = new Juego(jugador1, jugador2);
+        if(jugador1 == null || jugador2 ==null) {
+        	JOptionPane.showMessageDialog(null, "Regrese y registre su usuario para jugar");
+        	ventanaPrincipal.mostrarPanel(ventanaPrincipal.getjCuatriki());
+        }else {
+        	ventanaPrincipal.mostrarPanel(ventanaPrincipal.getjCuatriki());
+        }
+
+        ventanaPrincipal.mostrarPanel(ventanaPrincipal.getjCuatriki()); // Mostrar pantalla de juego
+    }
+
+    private void BackToMenu() {
+        ventanaPrincipal.mostrarPanel(ventanaPrincipal.getpInicio());
+    }
+
+    private void BackToGame() {
+        ventanaPrincipal.mostrarPanel(ventanaPrincipal.getjCuatriki());
+    }
+
+    private void reiniciarTablero() {
+        JButton[][] botones = ventanaPrincipal.getjCuatriki().getMatrizDeJuego().getBotones();
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                botones[i][j].setIcon(null); 
+            }
+        }
+        movimientosRealizados = 0;
+        turnoJugador = true; 
+        juego.reiniciarJuego(); 
+    }
 }
+
