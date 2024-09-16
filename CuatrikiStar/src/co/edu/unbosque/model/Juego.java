@@ -54,25 +54,25 @@ public class Juego {
 
         // Verificar filas
         for (int i = 0; i < 4; i++) {
-            if (tablero[i][0] == simbolo && tablero[i][1] == simbolo && tablero[i][2] == simbolo && tablero[i][3] == simbolo && tablero[i][4] == simbolo) {
+            if (tablero[i][0] == simbolo && tablero[i][1] == simbolo && tablero[i][2] == simbolo && tablero[i][3] == simbolo ) {
                 return true; 
             }
         }
 
         // Verificar columnas
         for (int j = 0; j < 4; j++) {
-            if (tablero[0][j] == simbolo && tablero[1][j] == simbolo && tablero[2][j] == simbolo && tablero[3][j] == simbolo && tablero[4][j] == simbolo) {
+            if (tablero[0][j] == simbolo && tablero[1][j] == simbolo && tablero[2][j] == simbolo && tablero[3][j] == simbolo) {
                 return true; // Ganador en la columna
             }
         }
 
         // Verificar diagonal principal
-        if (tablero[0][0] == simbolo && tablero[1][1] == simbolo && tablero[2][2] == simbolo && tablero[3][3] == simbolo && tablero[4][4] == simbolo) {
+        if (tablero[0][0] == simbolo && tablero[1][1] == simbolo && tablero[2][2] == simbolo && tablero[3][3] == simbolo ) {
             return true;
         }
 
         // Verificar diagonal inversa
-        if (tablero[0][3] == simbolo && tablero[1][2] == simbolo && tablero[2][1] == simbolo && tablero[3][0] == simbolo && tablero[4][0] == simbolo) {
+        if (tablero[0][3] == simbolo && tablero[1][2] == simbolo && tablero[2][1] == simbolo && tablero[3][0] == simbolo ) {
             return true;
         }
 
@@ -83,11 +83,11 @@ public class Juego {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 if (tablero[i][j] == '-') {
-                    return false; // Si hay una celda vacía, no es empate
+                    return false; 
                 }
             }
         }
-        return true; // Si no hay celdas vacías, es empate
+        return true; 
     }
 
     public boolean isJuegoTerminado() {
@@ -102,5 +102,12 @@ public class Juego {
         inicializarTablero();
         juegoTerminado = false;
     }
+    public Jugador getGanador() {
+        if (!juegoTerminado) return null;
+        if (verificarVictoria(jugador1)) return jugador1;
+        if (verificarVictoria(jugador2)) return jugador2;
+        return null; // Retorna null si es empate o el juego no ha terminado
+    }
+    
 }
 
