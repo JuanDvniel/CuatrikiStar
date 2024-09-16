@@ -30,7 +30,7 @@ public class Controller {
         ventanaPrincipal.getrJugador().getPlayButton().addActionListener(e -> irAJugar());
         ventanaPrincipal.getrJugador().getGuardarJugador1().addActionListener(e -> guardarJugador());
         ventanaPrincipal.getrJugador().getGuardarJugador2().addActionListener(e -> guardarJugador());
-        ventanaPrincipal.getjCuatriki().getBackMenuButton().addActionListener(e -> BackToMenu());
+        ventanaPrincipal.getjCuatriki().getBackMenuButton().addActionListener(e -> backToMenu());
         ventanaPrincipal.getjCuatriki().getGameHButton().addActionListener(e -> abrirPantallaHistorialPartidas());
         ventanaPrincipal.getjCuatriki().getRestartButton().addActionListener(e -> reiniciarTablero());
 
@@ -121,11 +121,11 @@ public class Controller {
     }
 
 
-    private void BackToMenu() {
+    private void backToMenu() {
         ventanaPrincipal.mostrarPanel(ventanaPrincipal.getpInicio());
     }
 
-    private void BackToGame() {
+    private void backToGame() {
         ventanaPrincipal.mostrarPanel(ventanaPrincipal.getjCuatriki());
     }
 

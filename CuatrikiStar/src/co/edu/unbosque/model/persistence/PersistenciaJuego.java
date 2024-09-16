@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import co.edu.unbosque.model.Juego;
-import co.edu.unbosque.model.Jugador;
+
 
 public class PersistenciaJuego {
 
