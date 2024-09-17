@@ -28,7 +28,7 @@ public class PersistenciaJuego {
                 }
                 bw.newLine();
             }
-            bw.flush(); // Asegúrate de que los datos se escriben en el archivo
+            bw.flush(); 
         } catch (IOException e) {
             System.err.println("Error al escribir en el archivo de historial: " + e.getMessage());
         }
@@ -44,4 +44,5 @@ public class PersistenciaJuego {
         }
         return historial;
     }
+    
 }

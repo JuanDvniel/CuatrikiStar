@@ -30,7 +30,7 @@ public class JugarCuatriki extends JPanel {
         // Donde se mostrará la consola
         consola = new JTextArea();
         consola.setBounds(628, 202, 298, 377);
-        consola.setEditable(true);
+        consola.setEditable(false);
         consola.setOpaque(false);
         consola.setBorder(new EmptyBorder(0, 0, 0, 0));
         consola.setFont(fontConfig.getFuentePersonalizada());
@@ -136,6 +136,10 @@ public class JugarCuatriki extends JPanel {
 	public void setMatrizDeJuego(MatrizDeJuego matrizDeJuego) {
 		this.matrizDeJuego = matrizDeJuego;
 	}
+    private void actualizarConsola(String texto) {
+         
+        consola.append(texto);
+    }
     
 
 

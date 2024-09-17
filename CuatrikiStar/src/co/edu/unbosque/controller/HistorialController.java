@@ -27,11 +27,7 @@ public class HistorialController {
             vistaHistorial.mostrarError("Error al cargar el historial: " + e.getMessage());
         }
     }
-    private void abrirPantallaHistorialPartidas() {
-        ventanaPrincipal.mostrarPanel(ventanaPrincipal.gethPartidas());
-        HistorialController historialController = new HistorialController(ventanaPrincipal.gethPartidas());
-        historialController.cargarHistorial();
-    }
+
 
 }
 

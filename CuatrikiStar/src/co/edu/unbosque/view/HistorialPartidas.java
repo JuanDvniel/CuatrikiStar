@@ -54,7 +54,7 @@ public class HistorialPartidas extends JPanel {
 		// Donde se mostrará la consola
 		ConsolaHistorial = new JTextArea();
 		ConsolaHistorial.setBounds(53, 252, 875, 307);
-		ConsolaHistorial.setEditable(true);
+		ConsolaHistorial.setEditable(false);
 		ConsolaHistorial.setOpaque(false);
 		ConsolaHistorial.setBorder(new EmptyBorder(0, 0, 0, 0));
 		ConsolaHistorial.setFont(fontConfig.getFuentePersonalizada());
@@ -75,9 +75,12 @@ public class HistorialPartidas extends JPanel {
 		add(labelFondoHistorial);
 
 	}
-    public void mostrarHistorial(List<String> historial) {
-    	ConsolaHistorial.setText(String.join("\n", historial));
-    }
+	  public void mostrarHistorial(List<String> historial) {
+		  ConsolaHistorial.setText("");  // Clear previous content
+	        for (String linea : historial) {
+	        	ConsolaHistorial.append(linea + "\n");
+	        }
+	    }
 
     public void mostrarError(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje, "Error", JOptionPane.ERROR_MESSAGE);

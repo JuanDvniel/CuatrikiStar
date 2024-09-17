@@ -1,0 +1,28 @@
+Partida entre david y Herrera
+Ganador: david
+Tablero final:
+MM
+MM
+MM
+MMM
+Partida entre Brayan y david 
+Ganador: Empate
+Tablero final:
+
+
+
+
+Partida entre Brayan y david 
+Ganador: david 
+Tablero final:
+
+
+
+
+Partida entre 1 y 2
+Ganador: Empate
+Tablero final:
+
+
+
+

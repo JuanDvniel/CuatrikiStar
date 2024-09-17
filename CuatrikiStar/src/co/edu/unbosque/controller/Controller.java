@@ -2,6 +2,7 @@ package co.edu.unbosque.controller;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 import co.edu.unbosque.model.CasillaOcupadaException;
 import co.edu.unbosque.model.Juego;
@@ -35,6 +36,8 @@ public class Controller {
         ventanaPrincipal.getjCuatriki().getBackMenuButton().addActionListener(e -> backToMenu());
         ventanaPrincipal.getjCuatriki().getGameHButton().addActionListener(e -> abrirPantallaHistorialPartidas());
         ventanaPrincipal.getjCuatriki().getRestartButton().addActionListener(e -> reiniciarTablero());
+        ventanaPrincipal.gethPartidas().getBackMenuButton().addActionListener(e -> backToMenu());
+        ventanaPrincipal.gethPartidas().getBackToGame().addActionListener(e -> backToGame());
 
         // Asignar oyentes a los botones del tablero
         asignarOyentesTablero();
@@ -68,43 +71,61 @@ public class Controller {
     private void manejarMovimiento(int fila, int columna, JButton boton) {
         try {
             if (boton.getIcon() == null) { 
-                if (turnoJugador) {
-                    boton.setIcon(ventanaPrincipal.getjCuatriki().getMatrizDeJuego().getImagenX()); 
-                    juego.jugarTurno(jugador1, fila, columna); // Actualizar el modelo
-                } else {
-                    boton.setIcon(ventanaPrincipal.getjCuatriki().getMatrizDeJuego().getImagenO()); 
-                    juego.jugarTurno(jugador2, fila, columna); // Actualizar el modelo
-                }
+                char jugadorActual = turnoJugador ? 'X' : 'O';
+                boton.setIcon(turnoJugador ? ventanaPrincipal.getjCuatriki().getMatrizDeJuego().getImagenX() : ventanaPrincipal.getjCuatriki().getMatrizDeJuego().getImagenO());
+                juego.jugarTurno(turnoJugador ? jugador1 : jugador2, fila, columna);
+
+                // Registro del movimiento en la consola
+                actualizarConsola("Jugador " + jugadorActual + " ha movido en la posición (" + fila + ", " + columna + ")\n");
 
                 turnoJugador = !turnoJugador; 
                 movimientosRealizados++;
 
                 if (juego.isJuegoTerminado()) {
-                    JOptionPane.showMessageDialog(null, "¡El juego ha terminado!");
-                    finalizarJuego(); 
+                    String resultado = juego.getGanador() != null ? "¡" + juego.getGanador().getNombre() + " ha ganado!" : "¡El juego ha terminado en empate!";
+                    JOptionPane.showMessageDialog(null, resultado);
+                    actualizarConsola(resultado + "\n");
+                    finalizarJuego();
                     reiniciarTablero();
                 } else if (movimientosRealizados == 16) {
-                    JOptionPane.showMessageDialog(null, "¡Es un empate!");
-                    finalizarJuego(); 
+                    String empateMsg = "¡Es un empate!";
+                    JOptionPane.showMessageDialog(null, empateMsg);
+                    actualizarConsola(empateMsg + "\n");
+                    finalizarJuego();
                     reiniciarTablero();
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "¡Esa casilla ya está ocupada!");
+                actualizarConsola("Intento de mover en una casilla ocupada (" + fila + ", " + columna + ")\n");
             }
         } catch (CasillaOcupadaException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
+            actualizarConsola("Error: " + e.getMessage() + "\n");
         } catch (JuegoTerminadoException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
+            actualizarConsola("Error: " + e.getMessage() + "\n");
         }
     }
 
-    private void abrirPantallaRegistro() {
+    public void actualizarConsola(String texto) {
+        JTextArea consola = ventanaPrincipal.getjCuatriki().getConsola();
+        consola.append(texto);
+    }
+
+
+
+
+
+	private void abrirPantallaRegistro() {
         ventanaPrincipal.mostrarPanel(ventanaPrincipal.getrJugador());
     }
 
-    private void abrirPantallaHistorialPartidas() {
-        ventanaPrincipal.mostrarPanel(ventanaPrincipal.gethPartidas());
-    }
+	public void abrirPantallaHistorialPartidas() {
+	    ventanaPrincipal.mostrarPanel(ventanaPrincipal.gethPartidas());
+	    HistorialController historialController = new HistorialController(ventanaPrincipal.gethPartidas());
+	    historialController.cargarHistorial();
+	}
+
 
     private void irAJugar() {
         if (jugador1 == null || jugador2 == null) {
@@ -145,5 +166,6 @@ public class Controller {
         turnoJugador = true; 
         juego.reiniciarJuego(); 
     }
+    
 }
 
