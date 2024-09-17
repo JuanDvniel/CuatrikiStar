@@ -1,10 +1,12 @@
 package co.edu.unbosque.view;
 
 import java.awt.Color;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
@@ -16,7 +18,7 @@ public class HistorialPartidas extends JPanel {
 	private JButton backMenuButton;
 	private JButton backToGame;
 	private JTextArea ConsolaHistorial;
-	private FontConfig fontConfig;  // Instancia de Configuracion de Fuente.
+	private FontConfig fontConfig;  
 
 	public HistorialPartidas() {
 		setBounds(0, 0, 1300, 900);
@@ -33,7 +35,7 @@ public class HistorialPartidas extends JPanel {
 
 	private void inicializarComponentes() {
 
-		// Botón para volver al menú principal
+		
 		backMenuButton = new JButton();
 		backMenuButton.setBounds(731, 795, 397, 102);
 		backMenuButton.setContentAreaFilled(false);
@@ -41,7 +43,7 @@ public class HistorialPartidas extends JPanel {
 		backMenuButton.setFocusPainted(false);
 		add(backMenuButton);
 
-		// Botón para volver a la partida
+	
 		backToGame = new JButton();
 		backToGame.setBounds(137, 795, 435, 102);
 		backToGame.setContentAreaFilled(false);
@@ -73,6 +75,13 @@ public class HistorialPartidas extends JPanel {
 		add(labelFondoHistorial);
 
 	}
+    public void mostrarHistorial(List<String> historial) {
+    	ConsolaHistorial.setText(String.join("\n", historial));
+    }
+
+    public void mostrarError(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+    }
 
 	public JButton getBackMenuButton() {
 		return backMenuButton;

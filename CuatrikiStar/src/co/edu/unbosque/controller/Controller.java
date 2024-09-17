@@ -79,9 +79,11 @@ public class Controller {
 
                 if (juego.isJuegoTerminado()) {
                     JOptionPane.showMessageDialog(null, "¡El juego ha terminado!");
+                    finalizarJuego(); 
                     reiniciarTablero();
                 } else if (movimientosRealizados == 16) {
                     JOptionPane.showMessageDialog(null, "¡Es un empate!");
+                    finalizarJuego(); 
                     reiniciarTablero();
                 }
             } else {
