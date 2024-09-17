@@ -15,28 +15,28 @@ public class VentanaPrincipal extends JFrame{
 	public VentanaPrincipal() {
 
 		setTitle("CuatrikiStar");
-		setSize(1300, 930);
+		setSize(975, 697);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setBackground(Color.WHITE);
 		getContentPane().setLayout(null);
 
 
 		pInicio = new PantallaInicio();
-		pInicio.setBounds(0, 0, 1300, 900);
+		pInicio.setBounds(0, 0, 975, 675);
 		getContentPane().add(pInicio);
 
 		rJugador = new RegistroJugador();
-		rJugador.setBounds(0, 0, 1300, 900);
+		rJugador.setBounds(0, 0, 975, 675);
 		rJugador.setVisible(false);
 		getContentPane().add(rJugador);
 
 		jCuatriki = new JugarCuatriki();
-		jCuatriki.setBounds(0, 0, 1300, 900);
+		jCuatriki.setBounds(0, 0, 975, 675);
 		jCuatriki.setVisible(false);
 		getContentPane().add(jCuatriki);
 
 		hPartidas = new HistorialPartidas();
-		hPartidas.setBounds(0, 0, 1300, 900);
+		hPartidas.setBounds(0, 0, 975, 675);
 		hPartidas.setVisible(false);
 		getContentPane().add(hPartidas);
 

@@ -19,7 +19,7 @@ public class JugarCuatriki extends JPanel {
     private MatrizDeJuego matrizDeJuego;
 
     public JugarCuatriki() {
-        setBounds(0, 0, 1300, 900);
+        setBounds(0, 0, 975, 675);
         setLayout(null);
         setVisible(true);
         fontConfig = new FontConfig();
@@ -29,7 +29,7 @@ public class JugarCuatriki extends JPanel {
     private void inicializarComponentes() {
         // Donde se mostrará la consola
         consola = new JTextArea();
-        consola.setBounds(837, 269, 397, 503);
+        consola.setBounds(628, 202, 298, 377);
         consola.setEditable(true);
         consola.setOpaque(false);
         consola.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -39,7 +39,7 @@ public class JugarCuatriki extends JPanel {
 
         // Botón para reiniciar el juego
         restartButton = new JButton();
-        restartButton.setBounds(75, 808, 277, 102);
+        restartButton.setBounds(56, 588, 208, 77);
         restartButton.setContentAreaFilled(false);
         restartButton.setBorderPainted(false);
         restartButton.setFocusPainted(false);
@@ -47,7 +47,7 @@ public class JugarCuatriki extends JPanel {
 
         // Botón para volver al menú principal
         backMenuButton = new JButton();
-        backMenuButton.setBounds(390, 808, 397, 102);
+        backMenuButton.setBounds(293, 588, 307, 77);
         backMenuButton.setContentAreaFilled(false);
         backMenuButton.setBorderPainted(false);
         backMenuButton.setFocusPainted(false);
@@ -55,37 +55,37 @@ public class JugarCuatriki extends JPanel {
 
         // Botón para ver el historial de partidas
         gameHButton = new JButton();
-        gameHButton.setBounds(837, 808, 409, 102);
+        gameHButton.setBounds(628, 588, 298, 77);
         gameHButton.setContentAreaFilled(false);
         gameHButton.setBorderPainted(false);
         gameHButton.setFocusPainted(false);
         add(gameHButton);
         
         matrizDeJuego = new MatrizDeJuego();
-        matrizDeJuego.setBounds(107, 212, 596, 551);  // Posicionar la matriz de juego
+        matrizDeJuego.setBounds(80, 159, 447, 413);  // Posicionar la matriz de juego
         add(matrizDeJuego);  // Agregar la matriz al panel
         
         ImageIcon fondoMatriz = new ImageIcon(getClass().getResource("/images/matriz/MATRIZDIBUJO.png"));
 		JLabel labelfondoMatriz = new JLabel(fondoMatriz);
-		labelfondoMatriz.setBounds(107, 212, 596, 551);
+		labelfondoMatriz.setBounds(80, 159, 447, 413);
 		add(labelfondoMatriz);
 
         // Imágenes para los botones
         JLabel labelRestart = new JLabel(new ImageIcon(getClass().getResource("/images/JugarCuatriki/RESTART.png")));
-        labelRestart.setBounds(75, 808, 277, 102);
+        labelRestart.setBounds(56, 588, 208, 77);
         add(labelRestart);
 
         JLabel labelBackMenu = new JLabel(new ImageIcon(getClass().getResource("/images/JugarCuatriki/BACK TO MENU.png")));
-        labelBackMenu.setBounds(390, 808, 409, 102);
+        labelBackMenu.setBounds(293, 588, 307, 77);
         add(labelBackMenu);
 
         JLabel labelGameH = new JLabel(new ImageIcon(getClass().getResource("/images/JugarCuatriki/GAME HISTORY.png")));
-        labelGameH.setBounds(837, 808, 397, 102);
+        labelGameH.setBounds(628, 588, 298, 77);
         add(labelGameH);
 
         // Fondo de pantalla del juego
         JLabel labelDemo1Screen = new JLabel(new ImageIcon(getClass().getResource("/images/JugarCuatriki/Demo1Screen.png")));
-        labelDemo1Screen.setBounds(0, 0, 1300, 900);
+        labelDemo1Screen.setBounds(0, 0, 975, 675);
         add(labelDemo1Screen);
     }
 

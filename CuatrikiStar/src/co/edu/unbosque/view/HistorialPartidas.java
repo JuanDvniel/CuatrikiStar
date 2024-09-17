@@ -19,7 +19,7 @@ public class HistorialPartidas extends JPanel {
 	private FontConfig fontConfig;  // Instancia de Configuracion de Fuente.
 
 	public HistorialPartidas() {
-		setBounds(0, 0, 1300, 900);
+		setBounds(0, 0, 975, 675);
 		setBackground(null);
 		setLayout(null);
 		setVisible(true);
@@ -35,7 +35,7 @@ public class HistorialPartidas extends JPanel {
 
 		// Botón para volver al menú principal
 		backMenuButton = new JButton();
-		backMenuButton.setBounds(731, 795, 397, 102);
+		backMenuButton.setBounds(548, 596, 307, 77);
 		backMenuButton.setContentAreaFilled(false);
 		backMenuButton.setBorderPainted(false);
 		backMenuButton.setFocusPainted(false);
@@ -43,7 +43,7 @@ public class HistorialPartidas extends JPanel {
 
 		// Botón para volver a la partida
 		backToGame = new JButton();
-		backToGame.setBounds(137, 795, 435, 102);
+		backToGame.setBounds(103, 596, 326, 77);
 		backToGame.setContentAreaFilled(false);
 		backToGame.setBorderPainted(false);
 		backToGame.setFocusPainted(false);
@@ -51,7 +51,7 @@ public class HistorialPartidas extends JPanel {
 
 		// Donde se mostrará la consola
 		ConsolaHistorial = new JTextArea();
-		ConsolaHistorial.setBounds(70, 336, 1166, 409);
+		ConsolaHistorial.setBounds(53, 252, 875, 307);
 		ConsolaHistorial.setEditable(true);
 		ConsolaHistorial.setOpaque(false);
 		ConsolaHistorial.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -60,16 +60,16 @@ public class HistorialPartidas extends JPanel {
 		add(ConsolaHistorial);
 
 		JLabel labelBackGame = new JLabel(new ImageIcon(getClass().getResource("/images/HistorialPartidas/BACK TO GAME.png")));
-		labelBackGame.setBounds(137, 795, 435, 102);
+		labelBackGame.setBounds(103, 596, 326, 77);
 		add(labelBackGame);
 
 		JLabel labelBackMenu = new JLabel(new ImageIcon(getClass().getResource("/images/JugarCuatriki/BACK TO MENU.png")));
-		labelBackMenu.setBounds(731, 795, 409, 102);
+		labelBackMenu.setBounds(548, 596, 307, 77);
 		add(labelBackMenu);
 
 		ImageIcon FondoHistorial = new ImageIcon(getClass().getResource("/images/HistorialPartidas/HistorialBack.png"));
 		JLabel labelFondoHistorial = new JLabel(FondoHistorial);
-		labelFondoHistorial.setBounds(0, 0, 1300, 900);
+		labelFondoHistorial.setBounds(0, 0, 975, 675);
 		add(labelFondoHistorial);
 
 	}
