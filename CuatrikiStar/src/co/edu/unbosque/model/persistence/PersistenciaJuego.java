@@ -20,14 +20,7 @@ public class PersistenciaJuego {
             bw.newLine();
             bw.write("Ganador: " + (juego.getGanador() != null ? juego.getGanador().getNombre() : "Empate"));
             bw.newLine();
-            bw.write("Tablero final:");
-            bw.newLine();
-            for (char[] fila : juego.getTablero()) {
-                for (char c : fila) {
-                    bw.write(c + ' ');
-                }
-                bw.newLine();
-            }
+
             bw.flush(); 
         } catch (IOException e) {
             System.err.println("Error al escribir en el archivo de historial: " + e.getMessage());
