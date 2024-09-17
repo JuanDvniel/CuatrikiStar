@@ -29,3 +29,5 @@ Tablero final:
 Partida entre david | y 32
 Ganador: david |
 Tablero final:
+Partida entre daniel y santiago
+Ganador: daniel
