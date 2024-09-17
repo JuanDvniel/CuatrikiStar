@@ -15,7 +15,7 @@ public class PantallaInicio extends JPanel {
 
 	public PantallaInicio() {
 
-		setBounds(0, 0, 1300, 900);
+		setBounds(0, 0, 975, 675);
 		setBackground(null);
 		setLayout(null);
 		setVisible(true);
@@ -28,7 +28,7 @@ public class PantallaInicio extends JPanel {
 
 		// Botón para iniciar el juego
         startButton = new JButton();
-        startButton.setBounds(516, 600, 276, 128);
+        startButton.setBounds(387, 450, 207, 96);
         startButton.setContentAreaFilled(false);  // Mantener invisible pero funcional
         startButton.setBorderPainted(false);
         startButton.setFocusPainted(false);
@@ -36,7 +36,7 @@ public class PantallaInicio extends JPanel {
 
         // Botón para ver el historial de partidas
         gameHistoryButton = new JButton();
-        gameHistoryButton.setBounds(455, 700, 397, 102);
+        gameHistoryButton.setBounds(341, 525, 298, 77);
         gameHistoryButton.setContentAreaFilled(false);  // Mantener invisible pero funcional
         gameHistoryButton.setBorderPainted(false);
         gameHistoryButton.setFocusPainted(false);
@@ -44,17 +44,17 @@ public class PantallaInicio extends JPanel {
 		
 		ImageIcon GameH = new ImageIcon(getClass().getResource("/images/JugarCuatriki/GAME HISTORY.png"));
 		JLabel labelGameH = new JLabel(GameH);
-		labelGameH.setBounds(455, 700, 397, 102);
+		labelGameH.setBounds(341, 525, 298, 77);
 		add(labelGameH);
 
 		ImageIcon StartButton = new ImageIcon(getClass().getResource("/images/PanelInicio/STARTBUTTON.png"));
 		JLabel labelStartButton = new JLabel(StartButton);
-		labelStartButton.setBounds(516, 600, 276, 128);
+		labelStartButton.setBounds(387, 450, 207, 96);
 		add(labelStartButton);
 
 		ImageIcon Logo = new ImageIcon(getClass().getResource("/images/PanelInicio/LOGO.png"));
 		JLabel labelLogo = new JLabel(Logo);
-		labelLogo.setBounds(-20,0,1300,900);
+		labelLogo.setBounds(0,0,975,675);
 		add(labelLogo);
 
 		Fondo = new ImageConfig();

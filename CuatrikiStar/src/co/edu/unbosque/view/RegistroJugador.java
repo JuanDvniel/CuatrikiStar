@@ -20,10 +20,11 @@ public class RegistroJugador extends JPanel {
     private JTextField nombreJugador1;
     private JTextField nombreJugador2;
     private FontConfig fontConfig;  // Instancia de Configuracion de Fuente.
+    private ImageConfig Fondo;
 
     public RegistroJugador() {
  
-        setBounds(0, 0, 1300, 900);
+        setBounds(0, 0, 975, 675);
         setBackground(null);
         setLayout(null);
         setVisible(true);
@@ -38,7 +39,7 @@ public class RegistroJugador extends JPanel {
 
     	 // Campo de texto para el nombre del Jugador 1
         nombreJugador1 = new JTextField();
-        nombreJugador1.setBounds(171, 403, 310, 75);
+        nombreJugador1.setBounds(113, 306, 232, 56);
         nombreJugador1.setOpaque(false);
         nombreJugador1.setBorder(new EmptyBorder(0, 0, 0, 0));
         nombreJugador1.setHorizontalAlignment(JTextField.CENTER);
@@ -48,7 +49,7 @@ public class RegistroJugador extends JPanel {
 
         // Campo de texto para el nombre del Jugador 2
         nombreJugador2 = new JTextField();
-        nombreJugador2.setBounds(826, 403, 310, 75);
+        nombreJugador2.setBounds(620, 306, 232, 56);
         nombreJugador2.setOpaque(false);
         nombreJugador2.setBorder(new EmptyBorder(0, 0, 0, 0));
         nombreJugador2.setHorizontalAlignment(JTextField.CENTER);
@@ -58,7 +59,7 @@ public class RegistroJugador extends JPanel {
 
         // Botón invisible para guardar el nombre del Jugador 1
         guardarJugador1 = new JButton();
-        guardarJugador1.setBounds(249, 528, 148, 46);
+        guardarJugador1.setBounds(180, 400, 148, 46);
         guardarJugador1.setContentAreaFilled(false);  // Mantener invisible pero funcional
         guardarJugador1.setBorderPainted(false);
         guardarJugador1.setFocusPainted(false);
@@ -66,7 +67,7 @@ public class RegistroJugador extends JPanel {
 
         // Botón invisible para guardar el nombre del Jugador 2
         guardarJugador2 = new JButton();
-        guardarJugador2.setBounds(899, 528, 148, 46);
+        guardarJugador2.setBounds(680, 400, 148, 46);
         guardarJugador2.setContentAreaFilled(false);  // Mantener invisible pero funcional
         guardarJugador2.setBorderPainted(false);
         guardarJugador2.setFocusPainted(false);
@@ -74,7 +75,7 @@ public class RegistroJugador extends JPanel {
 
         // Botón invisible para iniciar el juego
         playButton = new JButton();
-        playButton.setBounds(516, 668, 276, 128);
+        playButton.setBounds(387, 501, 207, 96);
         playButton.setContentAreaFilled(false);  // Mantener invisible pero funcional
         playButton.setBorderPainted(false);
         playButton.setFocusPainted(false);
@@ -82,18 +83,16 @@ public class RegistroJugador extends JPanel {
 
         ImageIcon GUIPlayers = new ImageIcon(getClass().getResource("/images/RegistroJugador/GU.png"));
         JLabel labelGUIPlayers = new JLabel(GUIPlayers);
-        labelGUIPlayers.setBounds(0, 0, 1300, 900);
+        labelGUIPlayers.setBounds(0, 0, 975, 675);
         add(labelGUIPlayers);
 
         ImageIcon Players = new ImageIcon(getClass().getResource("/images/RegistroJugador/PLAYERS.png"));
         JLabel labelPlayers = new JLabel(Players);
-        labelPlayers.setBounds(0, 0, 1300, 900);
+        labelPlayers.setBounds(0, 0, 975, 675);
         add(labelPlayers);
 
-        ImageIcon Fondo = new ImageIcon(getClass().getResource("/images/PanelInicio/FONDO.png"));
-        JLabel labelFondo = new JLabel(Fondo);
-        labelFondo.setBounds(0, 0, 1300, 900);
-        add(labelFondo);
+        Fondo = new ImageConfig();
+		Fondo.dibujarFondo(this);
     }
 
 	public JButton getGuardarJugador1() {

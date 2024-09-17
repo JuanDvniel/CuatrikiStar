@@ -12,7 +12,7 @@ public class MatrizDeJuego extends JPanel {
     private ImageIcon imagenO;
 
     public MatrizDeJuego() {
-        setBounds(0, 0, 596, 551); 
+        setBounds(0, 0, 447, 413); 
         setOpaque(false);
         setLayout(new GridLayout(4, 4, 2, 2)); 
 

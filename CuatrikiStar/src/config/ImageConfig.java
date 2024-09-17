@@ -28,7 +28,7 @@ public class ImageConfig {
 
             // Crear y configurar el JLabel con la imagen de fondo
             JLabel labelFondo = new JLabel(Fondo);
-            labelFondo.setBounds(0, 0, 1300, 900);  // Ajusta según las dimensiones del panel
+            labelFondo.setBounds(0, 0, 975, 675);  // Ajusta según las dimensiones del panel
             panel.setLayout(null);  // Asegurarse de que el layout sea null para el posicionamiento
             panel.add(labelFondo);
 
