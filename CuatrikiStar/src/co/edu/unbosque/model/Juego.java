@@ -93,8 +93,33 @@ public class Juego {
     public boolean isJuegoTerminado() {
         return juegoTerminado;
     }
+    
 
-    public char[][] getTablero() {
+    public Jugador getJugador1() {
+		return jugador1;
+	}
+
+	public void setJugador1(Jugador jugador1) {
+		this.jugador1 = jugador1;
+	}
+
+	public Jugador getJugador2() {
+		return jugador2;
+	}
+
+	public void setJugador2(Jugador jugador2) {
+		this.jugador2 = jugador2;
+	}
+
+	public void setTablero(char[][] tablero) {
+		this.tablero = tablero;
+	}
+
+	public void setJuegoTerminado(boolean juegoTerminado) {
+		this.juegoTerminado = juegoTerminado;
+	}
+
+	public char[][] getTablero() {
         return tablero;
     }
 
