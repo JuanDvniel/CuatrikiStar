@@ -23,14 +23,14 @@ public class Juego {
         }
     }
 
-    public boolean jugarTurno(Jugador jugador, int fila, int columna) throws Exception {
+    public boolean jugarTurno(Jugador jugador, int fila, int columna) throws CasillaOcupadaException, JuegoTerminadoException {
         if (juegoTerminado) {
-            throw new Exception("El juego ha terminado. No se pueden hacer más movimientos.");
+        	 throw new JuegoTerminadoException("El juego ha terminado. No se pueden hacer más movimientos.");
         }
 
         if (tablero[fila][columna] != '-') {
-            throw new Exception("La casilla ya está ocupada. Elija otra casilla.");
-        }
+        	throw new CasillaOcupadaException("La casilla ya está ocupada. Elija otra casilla.");
+              }
 
         tablero[fila][columna] = jugador.getFicha();
 

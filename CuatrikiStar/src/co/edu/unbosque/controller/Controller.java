@@ -3,7 +3,9 @@ package co.edu.unbosque.controller;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+import co.edu.unbosque.model.CasillaOcupadaException;
 import co.edu.unbosque.model.Juego;
+import co.edu.unbosque.model.JuegoTerminadoException;
 import co.edu.unbosque.model.Jugador;
 import co.edu.unbosque.model.persistence.PersistenciaJuego;
 import co.edu.unbosque.view.VentanaPrincipal;
@@ -89,7 +91,9 @@ public class Controller {
             } else {
                 JOptionPane.showMessageDialog(null, "¡Esa casilla ya está ocupada!");
             }
-        } catch (Exception e) {
+        } catch (CasillaOcupadaException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch (JuegoTerminadoException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
@@ -106,14 +110,13 @@ public class Controller {
         if (jugador1 == null || jugador2 == null) {
             JOptionPane.showMessageDialog(null, "Regrese y registre su usuario para jugar");
             ventanaPrincipal.mostrarPanel(ventanaPrincipal.getrJugador());
-            return; // Importante retornar para no seguir ejecutando el resto del método
+            return; 
         }
         
         juego = new Juego(jugador1, jugador2);
-        ventanaPrincipal.mostrarPanel(ventanaPrincipal.getjCuatriki()); // Mostrar pantalla de juego
+        ventanaPrincipal.mostrarPanel(ventanaPrincipal.getjCuatriki()); 
     }
 
-    // Este método debería ser llamado cuando el juego concluye, por ejemplo, en algún manejador donde se detecta fin de partida
     private void finalizarJuego() {
         if (juego.isJuegoTerminado()) {
             PersistenciaJuego persistencia = new PersistenciaJuego();
