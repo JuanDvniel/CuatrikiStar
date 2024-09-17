@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 Partida entre david y Herrera
 Ganador: david
 Tablero final:
@@ -29,3 +30,26 @@ Tablero final:
 Partida entre david | y 32
 Ganador: david |
 Tablero final:
+=======
+Partida entre gug y gygug
+Ganador: gug
+Tablero final:
+
+MM
+MMM
+MMMM
+Partida entre Daniel y Betancourt
+Ganador: Daniel
+Tablero final:
+
+M
+MMMM
+MMMM
+Partida entre Daniel y Betancourt
+Ganador: Betancourt
+Tablero final:
+M
+MM
+MM
+MMM
+>>>>>>> Stashed changes

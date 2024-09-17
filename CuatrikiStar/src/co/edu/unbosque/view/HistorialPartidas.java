@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
@@ -15,108 +17,117 @@ import config.FontConfig;
 
 public class HistorialPartidas extends JPanel {
 
-	private JButton backMenuButton;
-	private JButton backToGame;
-	private JTextArea ConsolaHistorial;
-	private FontConfig fontConfig;  
+    private JButton backMenuButton;
+    private JButton backToGame;
+    private JTextArea ConsolaHistorial;
+    private JScrollPane scrollHistorial; 
+    private FontConfig fontConfig;  
 
-	public HistorialPartidas() {
-		setBounds(0, 0, 975, 675);
-		setBackground(null);
-		setLayout(null);
-		setVisible(true);
+    public HistorialPartidas() {
+        setBounds(0, 0, 975, 675);
+        setBackground(null);
+        setLayout(null);
+        setVisible(true);
 
+        fontConfig = new FontConfig(); 
 
-		fontConfig = new FontConfig(); 
+        inicializarComponentes();
+    }
 
-		inicializarComponentes();
+    private void inicializarComponentes() {
 
-	}
+        backMenuButton = new JButton();
+        backMenuButton.setBounds(548, 596, 307, 77);
+        backMenuButton.setContentAreaFilled(false);
+        backMenuButton.setBorderPainted(false);
+        backMenuButton.setFocusPainted(false);
+        add(backMenuButton);
 
-	private void inicializarComponentes() {
+        backToGame = new JButton();
+        backToGame.setBounds(103, 596, 326, 77);
+        backToGame.setContentAreaFilled(false);
+        backToGame.setBorderPainted(false);
+        backToGame.setFocusPainted(false);
+        add(backToGame);
 
-		
-		backMenuButton = new JButton();
-		backMenuButton.setBounds(548, 596, 307, 77);
-		backMenuButton.setContentAreaFilled(false);
-		backMenuButton.setBorderPainted(false);
-		backMenuButton.setFocusPainted(false);
-		add(backMenuButton);
+        // Donde se mostrará la consola
+        ConsolaHistorial = new JTextArea();
+        ConsolaHistorial.setEditable(false); // No editable
+        ConsolaHistorial.setOpaque(false);
+        ConsolaHistorial.setBorder(new EmptyBorder(0, 0, 0, 0));
+        ConsolaHistorial.setFont(fontConfig.getFuentePersonalizada());
+        ConsolaHistorial.setForeground(new Color(237, 15, 255));
 
-	
-		backToGame = new JButton();
-		backToGame.setBounds(103, 596, 326, 77);
-		backToGame.setContentAreaFilled(false);
-		backToGame.setBorderPainted(false);
-		backToGame.setFocusPainted(false);
-		add(backToGame);
+        // JScrollPane para permitir scroll en el JTextArea
+        scrollHistorial = new JScrollPane(ConsolaHistorial, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollHistorial.setBounds(53, 252, 875, 307); // Ajusta el tamaño y posición
+        scrollHistorial.setOpaque(false);
+        scrollHistorial.getViewport().setOpaque(false); // Hacer el viewport del JScrollPane transparente
+        scrollHistorial.setBorder(new EmptyBorder(0, 0, 0, 0)); // Sin bordes
+        
+        // Hacer invisibles las barras de desplazamiento
+        JScrollBar verticalScrollBar = scrollHistorial.getVerticalScrollBar();
+        verticalScrollBar.setPreferredSize(new java.awt.Dimension(0, 0)); // Oculta la barra vertical
 
-		// Donde se mostrará la consola
-		ConsolaHistorial = new JTextArea();
-		ConsolaHistorial.setBounds(53, 252, 875, 307);
-		ConsolaHistorial.setEditable(false);
-		ConsolaHistorial.setOpaque(false);
-		ConsolaHistorial.setBorder(new EmptyBorder(0, 0, 0, 0));
-		ConsolaHistorial.setFont(fontConfig.getFuentePersonalizada());
-		ConsolaHistorial.setForeground(new Color(237, 15, 255));
-		add(ConsolaHistorial);
+        JScrollBar horizontalScrollBar = scrollHistorial.getHorizontalScrollBar();
+        horizontalScrollBar.setPreferredSize(new java.awt.Dimension(0, 0)); // Oculta la barra horizontal
 
-		JLabel labelBackGame = new JLabel(new ImageIcon(getClass().getResource("/images/HistorialPartidas/BACK TO GAME.png")));
-		labelBackGame.setBounds(103, 596, 326, 77);
-		add(labelBackGame);
+        add(scrollHistorial); // Agregamos el JScrollPane
 
-		JLabel labelBackMenu = new JLabel(new ImageIcon(getClass().getResource("/images/JugarCuatriki/BACK TO MENU.png")));
-		labelBackMenu.setBounds(548, 596, 307, 77);
-		add(labelBackMenu);
+        JLabel labelBackGame = new JLabel(new ImageIcon(getClass().getResource("/images/HistorialPartidas/BACK TO GAME.png")));
+        labelBackGame.setBounds(103, 596, 326, 77);
+        add(labelBackGame);
 
-		ImageIcon FondoHistorial = new ImageIcon(getClass().getResource("/images/HistorialPartidas/HistorialBack.png"));
-		JLabel labelFondoHistorial = new JLabel(FondoHistorial);
-		labelFondoHistorial.setBounds(0, 0, 975, 675);
-		add(labelFondoHistorial);
+        JLabel labelBackMenu = new JLabel(new ImageIcon(getClass().getResource("/images/JugarCuatriki/BACK TO MENU.png")));
+        labelBackMenu.setBounds(548, 596, 307, 77);
+        add(labelBackMenu);
 
-	}
-	  public void mostrarHistorial(List<String> historial) {
-		  ConsolaHistorial.setText("");  // Clear previous content
-	        for (String linea : historial) {
-	        	ConsolaHistorial.append(linea + "\n");
-	        }
-	    }
+        ImageIcon FondoHistorial = new ImageIcon(getClass().getResource("/images/HistorialPartidas/HistorialBack.png"));
+        JLabel labelFondoHistorial = new JLabel(FondoHistorial);
+        labelFondoHistorial.setBounds(0, 0, 975, 675);
+        add(labelFondoHistorial);
+    }
+
+    public void mostrarHistorial(List<String> historial) {
+        ConsolaHistorial.setText("");  // Limpiar contenido previo
+        for (String linea : historial) {
+            ConsolaHistorial.append(linea + "\n");
+        }
+    }
 
     public void mostrarError(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
     }
 
-	public JButton getBackMenuButton() {
-		return backMenuButton;
-	}
+    public JButton getBackMenuButton() {
+        return backMenuButton;
+    }
 
-	public void setBackMenuButton(JButton backMenuButton) {
-		this.backMenuButton = backMenuButton;
-	}
+    public void setBackMenuButton(JButton backMenuButton) {
+        this.backMenuButton = backMenuButton;
+    }
 
-	public JButton getBackToGame() {
-		return backToGame;
-	}
+    public JButton getBackToGame() {
+        return backToGame;
+    }
 
-	public void setBackToGame(JButton backToGame) {
-		this.backToGame = backToGame;
-	}
+    public void setBackToGame(JButton backToGame) {
+        this.backToGame = backToGame;
+    }
 
-	public JTextArea getConsolaHistorial() {
-		return ConsolaHistorial;
-	}
+    public JTextArea getConsolaHistorial() {
+        return ConsolaHistorial;
+    }
 
-	public void setConsolaHistorial(JTextArea consolaHistorial) {
-		ConsolaHistorial = consolaHistorial;
-	}
+    public void setConsolaHistorial(JTextArea consolaHistorial) {
+        ConsolaHistorial = consolaHistorial;
+    }
 
-	public FontConfig getFontConfig() {
-		return fontConfig;
-	}
+    public FontConfig getFontConfig() {
+        return fontConfig;
+    }
 
-	public void setFontConfig(FontConfig fontConfig) {
-		this.fontConfig = fontConfig;
-	}
-
-
+    public void setFontConfig(FontConfig fontConfig) {
+        this.fontConfig = fontConfig;
+    }
 }
